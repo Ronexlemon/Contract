@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
-import {Math} from "./libraries/Multiplication.sol";
+import {Math} from "./libraries/MyLibraries.sol";
 
 contract B{
     uint256 val;
