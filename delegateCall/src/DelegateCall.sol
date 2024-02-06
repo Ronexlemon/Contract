@@ -32,6 +32,21 @@ contract C{
 }
 
 
+contract D{
+    
+    address public libraryAddress;
+    constructor(address _libAddress){
+        libraryAddress = _libAddress;
+    }
+
+    function executeStake()public  returns(uint256){
+        (bool success, bytes memory results) = libraryAddress.delegatecall(abi.encodeWithSignature("ConstStake()"));
+        require(success,"failed to get the result");
+        uint result = abi.decode(results,(uint256));
+        return result;
+    }
+}
+
 contract A {
     uint256 public  val;
     address public  sender;
@@ -46,3 +61,5 @@ contract A {
     }
 
 }
+
+
