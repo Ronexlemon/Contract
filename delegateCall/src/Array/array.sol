@@ -69,6 +69,12 @@ contract Array {
 
         }
     }
+    function removeLastschool()public{
+        AllSchools.pop();
+    }
+    function getAllSchools()public view returns(School[] memory){
+        return AllSchools;
+    }
     function getArraySize()public view returns(uint){
         return AllSchools.length;
     }

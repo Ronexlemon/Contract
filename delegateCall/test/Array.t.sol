@@ -31,6 +31,13 @@ contract ArrayTest is Test{
         
       assertEq(  contractArray.getAllPublicSchools()[0].numberOfStudents,1000);
     }
+    function test_removetheLastSchool()public{
+        
+        uint arraysize=  contractArray.getArraySize();
+        contractArray.removeLastschool();
+        
+        assertEq(contractArray.getAllSchools()[arraysize-2].numberOfStudents,3800);
+    }
 
 
 }
