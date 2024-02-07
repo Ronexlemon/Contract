@@ -9,12 +9,20 @@ contract StoreTest is Test{
 
     function setUp()public{
         contractStore = new Store();
+        contractStore.setPersonData("lemon",100000,0,true,20000);
 
     }
 
     function test_SetPersonalData()public{
-        contractStore.setPersonData("lemon",100000,0,true,2000);
         
-        assertEq(contractStore.persons[0].isMember)
+        
+        
+        assertEq(contractStore.getPersonData(0).isMember,true);
     }
+
+    function getNetPay()public{
+       uint net =  contractStore.getNetPay(0);
+        assertEq(net,80000);
+    }
+    
 }
