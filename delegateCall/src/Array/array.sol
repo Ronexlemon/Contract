@@ -69,5 +69,8 @@ contract Array {
 
         }
     }
+    function getArraySize()public view returns(uint){
+        return AllSchools.length;
+    }
 
 }
