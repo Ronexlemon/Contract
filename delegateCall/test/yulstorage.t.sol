@@ -18,5 +18,13 @@ contract YulStorage2Test is Test{
     assertEq(contractYulstorage2.readSlot3Val5(),5);
       
     }
+     function test_getslotForVal4()public{
+        
+
+    
+    assertEq(contractYulstorage2.getSlot(),3);
+      
+    }
+
 }
 
