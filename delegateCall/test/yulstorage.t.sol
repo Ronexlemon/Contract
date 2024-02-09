@@ -26,5 +26,14 @@ contract YulStorage2Test is Test{
       
     }
 
+     function test_getslotAndOffsetOfVal5()public{
+        
+      (uint a,uint b )= contractYulstorage2.getslotAndOffset();
+    
+    assertEq(a,3);
+    assertEq(b,28);
+      
+    }
+
 }
 
