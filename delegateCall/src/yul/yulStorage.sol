@@ -13,6 +13,29 @@ contract YulStorage2{
       uint8  val6 =9;
 
       //end of slot three
+       //bitwie masking
+       //changing the value of the slot
+      function setPacked(uint16 _newVal)public {
+        assembly{
+          // assume neavalue is 10 :=  0x000000000000000000000000000000000000000000000000000000000000000a
+          let oldValue := sload(val5.slot) //returns bytes of slot 3
+          // oldvalue =  0x0809000500000000000000000000000700000000000000000000000000000004
+          // mask    =  0xffff0000fffffffffffffffffffffffffffffffffffffffffffffffffff // where thy is zero replace with zero
+         let  mask    :=  0xffff0000fffffffffffffffffffffffffffffffffffffffffffffffffff
+          let cleared := and(oldValue,mask)
+           //  cleared = 0x0809000000000000000000000000000700000000000000000000000000000004
+           let shifted := shl(mul(val5.offset,8),_newVal)
+
+           // shifted  = 0x0000000a00000000000000000000000000000000000000000000000000000000
+           let newValue := or(shifted,cleared)
+           //  cleared = 0x0809000000000000000000000000000700000000000000000000000000000004
+           // shifted  = 0x0000000a00000000000000000000000000000000000000000000000000000000
+           // newValue = 0x0809000a00000000000000000000000700000000000000000000000000000004
+           sstore(val5.slot,newValue)
+
+
+        }
+      }
 
       function getslotAndOffset()external  pure returns(uint256 slot,uint256 offset){
         assembly{
