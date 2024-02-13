@@ -24,4 +24,16 @@ contract YulMappingTest is Test{
         uint256 value = yulMappingContract.getNestedMappingValue(9,8);
         assertEq(value, 7);
     }
+
+    function test_getLengthOfMappingDynamicArray()public{
+        uint256 value = yulMappingContract.getAddressMappinArrayLength(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+        assertEq(value, 3);
+    }
+
+    function test_firstElementInMappingDynamicArray()public{
+        uint256 value = yulMappingContract.getAddressMappinArrayValue(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4,0);
+        assertEq(value,55);
+    }
+
+    
 }
