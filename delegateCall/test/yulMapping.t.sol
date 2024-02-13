@@ -19,4 +19,9 @@ contract YulMappingTest is Test{
         uint256 value = yulMappingContract.getMappingValue(88);
         assertEq(value, 1);
     }
+
+    function test_NestedMappingValue()public{
+        uint256 value = yulMappingContract.getNestedMappingValue(9,8);
+        assertEq(value, 7);
+    }
 }
