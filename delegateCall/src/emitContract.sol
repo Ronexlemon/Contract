@@ -6,7 +6,7 @@ contract EmitEventContract{
     event Transfer(address from,address to,uint amount);
 
     function transfer(address _to,uint _amount)public{
-        emit Transfer(address(this), _to, _amount);
+        emit Transfer(msg.sender, _to, _amount);
 
     }
 }
