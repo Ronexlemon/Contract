@@ -1,6 +1,8 @@
 // SPDX-License-Identifier:MIT
 pragma solidity ^0.8.2 ;
 
+error notOwner();
+
 contract Calculation{
     uint public num;
     address public owner;
@@ -9,12 +11,15 @@ contract Calculation{
     }
 
     modifier onlyOwner(){
-        require(msg.sender == owner,"not owner");
+        if(msg.sender != owner){
+            revert notOwner();
+        }
         _;
     }
 
     //setNum
     function setNum(uint _num)public onlyOwner{
+        num=_num;
 
     }
 
