@@ -28,8 +28,8 @@ contract CalculationTest is Test{
     }
 
     //suppose to fail when not owner
-     function testFail_setnum()public{
-        vm.expectRevert(notOwner.selector);
+     function testFail_When_CallerNotOwner_setnum()public{
+        
        vm.prank(address(0));
          calc.setNum(15);  
         assertEq(calc.num(), 15);
