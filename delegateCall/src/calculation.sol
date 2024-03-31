@@ -4,8 +4,8 @@ pragma solidity ^0.8.2 ;
 error notOwner();
 
 contract Calculation{
-    event IncrementNum(address _caller, uint256 _value);
-     event DecrementNum(address _caller, uint256 _value);
+    event IncrementNum(address indexed _caller, uint256 _value);
+     event DecrementNum(address indexed _caller, uint256 _value);
     uint public num;
   
     address public owner;

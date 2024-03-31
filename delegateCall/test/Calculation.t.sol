@@ -6,6 +6,8 @@ import {Test} from "forge-std/Test.sol";
 error notOwner();
 
 contract CalculationTest is Test{
+    event IncrementNum(address indexed _caller, uint256 _value);
+     event DecrementNum(address indexed _caller, uint256 _value);
     Calculation public calc;
 
     function setUp()public{
@@ -18,6 +20,7 @@ contract CalculationTest is Test{
 
     function test_getnum()public{
         uint num = calc.getNum();
+        
         assertEq(num, 0);
     }
     //setNum
@@ -33,6 +36,15 @@ contract CalculationTest is Test{
        vm.prank(address(0));
          calc.setNum(15);  
         assertEq(calc.num(), 15);
+    }
+
+    //test increment emit
+
+    function test_incrementEmit()public{
+        vm.expectEmit(true, false, false, true);
+        emit IncrementNum(address(this), 1);
+        calc.increment();
+
     }
                
         
