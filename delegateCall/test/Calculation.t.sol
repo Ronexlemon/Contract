@@ -53,7 +53,7 @@ contract CalculationTest is Test{
 
     function test_ifOwnerIsMsender()public{
         console.log(calc.owner());
-        console.log(address(this));
+        console.log(msg.sender);
         assertEq(calc.owner(), msg.sender);
         
     }
