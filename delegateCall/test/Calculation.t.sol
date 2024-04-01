@@ -12,7 +12,7 @@ contract CalculationTest is Test{
     Calculation public calc;
 
     function setUp()public{
-        vm.prank(msg.sender);
+        
         CalculationScript calcScript = new CalculationScript();
         calc = calcScript.run();
 
@@ -28,7 +28,10 @@ contract CalculationTest is Test{
     }
     //setNum
     function test_setnum()public{
-       vm.prank(msg.sender);
+        console.log("address new is ",address(new CalculationScript().run()));
+        console.log("address this", address(this));
+        vm.prank(msg.sender);
+       
          calc.setNum(15);  
          console.log("The num is",calc.num());
         assertEq(calc.num(), 15);
@@ -45,6 +48,7 @@ contract CalculationTest is Test{
     //test increment emit
 
     function test_incrementEmit()public{
+
         vm.expectEmit(true, false, false, true);
         emit IncrementNum(address(this), 1);
         calc.increment();
@@ -54,9 +58,9 @@ contract CalculationTest is Test{
     //check the owner if it the sender
 
     function test_ifOwnerIsMsender()public{
-        console.log(calc.owner());
-        console.log(msg.sender);
-        assertEq(calc.owner(), msg.sender);
+        console.log("contract owner is",calc.owner());
+        
+        assertEq(calc.owner(),msg.sender);
         
     }
                
