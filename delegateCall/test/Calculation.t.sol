@@ -47,6 +47,15 @@ contract CalculationTest is Test{
         calc.increment();
 
     }
+
+    //check the owner if it the sender
+
+    function test_ifOwnerIsMsender()public{
+        console.log(calc.owner());
+        console.log(address(this));
+        assertEq(calc.owner(), address(this));
+        
+    }
                
         
      }
