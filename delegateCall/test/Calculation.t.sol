@@ -11,6 +11,7 @@ contract CalculationTest is Test{
     Calculation public calc;
 
     function setUp()public{
+        vm.prank(msg.sender);
         calc = new Calculation();
 
     }
@@ -25,7 +26,7 @@ contract CalculationTest is Test{
     }
     //setNum
     function test_setnum()public{
-       
+       vm.prank(msg.sender);
          calc.setNum(15);  
          console.log("The num is",calc.num());
         assertEq(calc.num(), 15);
@@ -53,7 +54,7 @@ contract CalculationTest is Test{
     function test_ifOwnerIsMsender()public{
         console.log(calc.owner());
         console.log(address(this));
-        assertEq(calc.owner(), address(this));
+        assertEq(calc.owner(), msg.sender);
         
     }
                
