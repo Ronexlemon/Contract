@@ -2,7 +2,7 @@
 pragma solidity ^0.8.2 ;
 
 import {Calculation} from "../src/calculation.sol";
-import {Test} from "forge-std/Test.sol";
+import {Test,console} from "forge-std/Test.sol";
 error notOwner();
 
 contract CalculationTest is Test{
@@ -27,6 +27,7 @@ contract CalculationTest is Test{
     function test_setnum()public{
        
          calc.setNum(15);  
+         console.log("The num is",calc.num());
         assertEq(calc.num(), 15);
     }
 
