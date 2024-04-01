@@ -7,10 +7,11 @@ import {Calculation} from "../src/calculation.sol";
 contract CalculationScript is Script{
     
 
-    function run() external{
+    function run() external returns(Calculation){
         vm.startBroadcast();
-        new Calculation();
+      Calculation calc =  new Calculation();
         vm.stopBroadcast();
+        return calc;
 
     }
 

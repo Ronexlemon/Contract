@@ -3,6 +3,7 @@ pragma solidity ^0.8.2 ;
 
 import {Calculation} from "../src/calculation.sol";
 import {Test,console} from "forge-std/Test.sol";
+import {CalculationScript} from "../script/DeployCalculation.s.sol";
 error notOwner();
 
 contract CalculationTest is Test{
@@ -12,7 +13,8 @@ contract CalculationTest is Test{
 
     function setUp()public{
         vm.prank(msg.sender);
-        calc = new Calculation();
+        CalculationScript calcScript = new CalculationScript();
+        calc = calcScript.run();
 
     }
 
