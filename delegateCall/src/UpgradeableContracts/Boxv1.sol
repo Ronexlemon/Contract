@@ -19,6 +19,9 @@ contract BoxV1 is Initializable,OwnableUpgradeable,UUPSUpgradeable{
     function getValue() public view returns (uint256) {
         return value;
     }
+    function getValue2() public view returns (uint256) {
+        return value;
+    }
 
     function version() public pure returns (uint256) {
         return 1;
